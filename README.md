@@ -1,2 +1,2 @@
 # Calculating-GPA
-Calculates GPA but inputting letter grade
+Calculates GPA by inputting letter grade

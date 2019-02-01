@@ -1,0 +1,89 @@
+/* 
+    Yenni Lam
+    To write a program that uses several different kinds of functions to calculate average GPA.
+*/ 
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+double calc ( int input_classes02);		 // Adding up the total score for each class.
+double define_grade(int classes); 		 // Asking the user to input the grade. Convert the grade to score.
+void func(double average, int classes);  		// Dividing the total grades over total classes.
+
+int main()
+{
+  int input_classes01, classes;
+  double average, total01;
+    
+    
+	cout << "How many classes are you taken?";
+	 cin >> input_classes01;
+	cout << "Please input A B C D F and P for the grade." << endl;
+	 
+	  for(;input_classes01 <=0;) 		    // the input classes are 0 or less than 0, the user have to input again.
+	  {
+      cout << "The number of classes must be one or greater. Please re-enter:";
+        cin >> input_classes01;
+	  }
+	  
+    total01= calc ( input_classes01);
+   
+    func( total01, input_classes01);
+  
+    return 0;
+}
+
+  double calc (int input_classes02)
+   {
+     double total;
+      for (int classes = 1; classes <= input_classes02 ; classes++)
+        total += define_grade(classes);
+        return total;
+   }
+  
+  double define_grade(int classes)   
+   {
+     int value;
+     char grades;
+    
+      while( true )           			   // get the grade's value, and loop until the valid entry is returned.
+      {
+      
+        cout << "Grade for "<< classes << " class: ";
+         cin >> grades;
+        
+          switch (grades)
+        {
+           case 'a': case 'A':  // An A is 4
+            value = 4;
+           return 4;
+           case 'b': case 'B':  // A B is 3
+            value = 3;
+            return 3;
+           case 'c': case 'C':  // A C is 2
+            value = 2;
+            return 2;
+           case 'd': case 'D':  // A D is 1 
+            value = 1;
+            return 1;
+           case 'P': case 'p':  // Passing is 0
+            value = 0;
+            return 0;
+           case 'F': case 'f':   // F is 0
+            value = 0;
+            return 0;
+            default:
+            cout << "Invalid. Please re-enter."<< endl;   
+         }   
+      }
+   }
+  
+   
+ void func (double total, int classes)  	// function to calculate the average gpa by using total grades divide classes that the user input.
+ {
+   double average;
+    average = total/classes;
+     cout << "You have an average of " << fixed << showpoint << setprecision(1) << average << " GPA." ;
+     
+ }
